@@ -20,3 +20,7 @@ Before starting the server, make sure the mysql server is initiated and configur
 
 Proxy function
 If you want to use this function which described in the General, HTTP and reverse proxy server will be nessesary. Nginx is prefferd. nginx.conf.example is an example for nginx configuration, you can simply use this conf.
+
+# Starting
+
+Index page is locate in http://localhost:7801/, you can add your own strategy and response here.
