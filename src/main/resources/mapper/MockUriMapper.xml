@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mock.mapper.MockUriMapper">
+	<!-- <cache size="128" eviction="LRU" readOnly="true" flushInterval="120000" /> -->
+
+	<insert id="insert" parameterType="com.mock.model.MockUri">
+		insert into mockuri
+		(id,mockProjectId,mockUriName,mockUri,mockMethod,isRun,createTime,updateTime)
+		values
+		(#{id},#{mockProjectId},#{mockUriName},#{mockUri},#{mockMethod},#{isRun},now(),now())
+	</insert>
+
+	<update id="update" parameterType="com.mock.model.MockUri">
+		update mockuri
+		set
+		<if test="mockUriName != null and mockUriName != ''">
+		mockUriName=#{mockUriName},	
+		</if>
+		<if test="mockUri != null and mockUri != ''">	
+		mockUri=#{mockUri},	
+		</if>
+		<if test="mockMethod != null and mockMethod != ''">
+		mockMethod=#{mockMethod},
+		</if>
+		<if test="isRun != null and isRun != ''">
+		isRun=#{isRun},
+		</if>
+		updateTime=now()
+		where
+		id=#{id}		
+	</update>
+
+	<delete id="delete" parameterType="com.mock.model.MockUri">
+		delete from  mockuri where id = #{id} 
+	</delete>
+
+
+
+	<select id="select" parameterType="com.mock.model.MockUri" resultType ="com.mock.model.MockUri">
+		select * from mockuri
+		<where>
+			 1 = 1
+			<if test="id != null and id !='' ">
+				and id = #{id}
+			</if>
+			<if test="mockProjectId != null and mockProjectId != ''">
+				and mockProjectId  = #{mockProjectId}
+			</if>
+			<if test="mockUri != null and mockUri != ''">
+				and mockUri  = #{mockUri}
+			</if>
+			<if test="mockMethod != null and mockMethod != ''">
+				and mockMethod  = #{mockMethod}
+			</if>
+			<if test="isRun != null and isRun != ''">
+				and isRun  = #{isRun}
+			</if>
+			order by idex asc
+		</where>
+
+	</select>
+
+
+
+</mapper>

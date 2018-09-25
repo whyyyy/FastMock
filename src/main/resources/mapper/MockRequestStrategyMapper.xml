@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mock.mapper.MockRequestStrategyMapper">
+	<!-- <cache size="128" eviction="LRU" readOnly="true" flushInterval="120000" /> -->
+
+	<insert id="insert" parameterType="com.mock.model.MockRequestStrategy">
+		insert into mockrequeststrategy
+		(id,mockUriId,mockRequestName,requestWait,verifyExpect,responseExpect,isRun,orderNum,remark,createTime,updateTime)
+		values
+		(#{id},#{mockUriId},#{mockRequestName},#{requestWait},#{verifyExpect},#{responseExpect},#{isRun},${orderNum},#{remark},now(),now())
+	</insert>
+
+	<update id="update" parameterType="com.mock.model.MockRequestStrategy">
+		update mockrequeststrategy
+		set
+		<if test="mockRequestName != null and mockRequestName != ''">
+			mockRequestName=#{mockRequestName},
+		</if>
+		<if test="requestWait != null and requestWait != ''">
+			requestWait=#{requestWait},
+		</if>
+		<if test="verifyExpect != null">
+			verifyExpect=#{verifyExpect},
+		</if>
+		<if test="responseExpect != null">
+			responseExpect=#{responseExpect},
+		</if>
+		<if test="isRun != null and isRun != ''">
+			isRun=#{isRun},
+		</if>
+		<if test="orderNum != null and orderNum != ''">
+			orderNum=#{orderNum},
+		</if>
+		<if test="remark != null">
+			remark=#{remark},
+		</if>
+		id=#{id}
+		where
+		id=#{id}		
+	</update>
+
+	<delete id="delete" parameterType="com.mock.model.MockRequestStrategy">
+		delete from  mockrequeststrategy where id = #{id} 
+	</delete>
+
+
+
+	<select id="select" parameterType="com.mock.model.MockRequestStrategy" resultType ="com.mock.model.MockRequestStrategy">
+		select * from mockrequeststrategy
+		<where>
+			1 = 1 
+			<if test="id != null and id !='' ">
+				and id = #{id}
+			</if>
+			<if test="mockUriId != null and mockUriId !=''">
+				and mockUriId =#{mockUriId}
+			</if>
+			<if test="isRun != null and isRun !=''">
+				and isRun =#{isRun}
+			</if>
+			order by orderNum asc
+		</where>
+
+	</select>
+
+
+
+</mapper>

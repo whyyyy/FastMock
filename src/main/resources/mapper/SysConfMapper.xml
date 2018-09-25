@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mock.mapper.SysConfMapper">
+	
+	<update id="update" parameterType="com.mock.model.SysConf">
+		update sysconf
+		set
+		value=#{value}
+		where
+		code=#{code}		
+	</update>
+	
+	<select id="select" parameterType="com.mock.model.SysConf" resultType ="com.mock.model.SysConf">
+		select * from sysconf
+		<where>
+			 1 = 1
+			<if test="code != null and code !='' ">
+				and code = #{code}
+			</if>
+			<if test="value != null and value != ''">
+				and value  = #{value}
+			</if>
+			<if test="desc != null and desc != ''">
+				and desc  = #{desc}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

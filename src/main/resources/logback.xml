@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <jmxConfigurator/>
+
+    <contextName>@project.build.finalName@</contextName>
+
+    <appender name="ERROR-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/opt/logs/fastmock_error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} mockserver --- [%t] %-40.40logger{39} : %m%n{LOG_EXCEPTION_CONVERSION_WORD:%wEx}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SQL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/opt/logs/fastmock-sql.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} fastmock --- [%t] %-40.40logger{39} : %m%n{LOG_EXCEPTION_CONVERSION_WORD:%wEx}</pattern>
+        </encoder>
+    </appender>
+	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/opt/logs/fastmock.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} fastmock --- [%t] %-40.40logger{39} : %m%n{LOG_EXCEPTION_CONVERSION_WORD:%wEx}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} mockserver --- [%t] %-40.40logger{39} : %m%n{LOG_EXCEPTION_CONVERSION_WORD:%wEx}</pattern>
+        </encoder>
+    </appender>
+
+	<logger name="org.mybatis" level="ERROR" additivity="false">
+        <appender-ref ref="SQL"/>
+    </logger>
+	<logger name="org.mongodb" level="INFO" additivity="false">
+        <appender-ref ref="SQL"/>
+    </logger>
+	<logger name="org.mongodb.driver.protocol.command" level="DEBUG" additivity="false">
+        <appender-ref ref="SQL"/>
+    </logger>
+    <logger name="com.mock" level="DEBUG">
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="com.mock.mapper" level="DEBUG" additivity="false">
+        <appender-ref ref="SQL"/>
+    </logger>
+	
+    <root level="info">
+		<appender-ref ref="ERROR-FILE"/>
+		<appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
