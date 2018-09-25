@@ -15,7 +15,7 @@
             <maxHistory>10</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} mockserver --- [%t] %-40.40logger{39} : %m%n{LOG_EXCEPTION_CONVERSION_WORD:%wEx}</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} fastmock --- [%t] %-40.40logger{39} : %m%n{LOG_EXCEPTION_CONVERSION_WORD:%wEx}</pattern>
         </encoder>
     </appender>
 
@@ -41,7 +41,7 @@
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} mockserver --- [%t] %-40.40logger{39} : %m%n{LOG_EXCEPTION_CONVERSION_WORD:%wEx}</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} fastmock --- [%t] %-40.40logger{39} : %m%n{LOG_EXCEPTION_CONVERSION_WORD:%wEx}</pattern>
         </encoder>
     </appender>
 
