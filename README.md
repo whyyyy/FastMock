@@ -11,6 +11,9 @@ This server can be used as a proxy.
     all requests form that terminal when no strategy is hit will be forwarded to its original destination.
     Also there is a switch for mock function on top level. If it is switched off, this server will try to forward all requests no matter if there is strategy hit.
     
+Screen shot
+<img src="/screenshot.png" />
+    
 # Installation
 
 This project is based on springboot2. To start the server, you can run MockApplication or packet the project to jar. 
