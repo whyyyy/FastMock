@@ -27,3 +27,8 @@ If you want to use this function which described in the General, HTTP and revers
 # Starting
 
 Index page is locate in http://localhost:7801/, you can add your own strategy and response here.
+
+# Change log
+v2.0:
+Rebuild front end, using vue and element-ui instead, more friendly, easier to operation.
+Optimize some sql issue.
