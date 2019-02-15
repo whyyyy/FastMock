@@ -47,7 +47,7 @@ public class MockStrategyService {
             log.info("===@@@===MockRequest:{}===@@@===", content);
             String uri = requestBean.getPath();
             MockUri mUri = new MockUri();
-            mUri.setIsRun("RUN");
+            mUri.setIsRun(1);
             mUri.setMockMethod(requestBean.getMethod());
             List<MockUri> us = mockUriMapper.select(mUri);
 
@@ -62,7 +62,7 @@ public class MockStrategyService {
                 if (matcher.matches()) {
                     MockRequestStrategy mockRequestCn = new MockRequestStrategy();
                     mockRequestCn.setMockUriId(mu.getId());
-                    mockRequestCn.setIsRun("RUN");
+                    mockRequestCn.setIsRun(1);
                     // 查询对应Uri 下面的策略集合
                     List<MockRequestStrategy> mockRequests = mockRequestStrategyMapper
                             .select(mockRequestCn);
@@ -94,7 +94,7 @@ public class MockStrategyService {
             log.info("===@@@===MockTestRequest:{}===@@@===", content);
             String uri = requestBean.getPath();
             MockUri mUri = new MockUri();
-            mUri.setIsRun("RUN");
+            mUri.setIsRun(1);
             mUri.setMockMethod(requestBean.getMethod());
             List<MockUri> us = mockUriMapper.select(mUri);
             if (us.size() == 0) {
@@ -109,7 +109,7 @@ public class MockStrategyService {
                 if (matcher.matches()) {
                     MockRequestStrategy mockRequestCn = new MockRequestStrategy();
                     mockRequestCn.setMockUriId(mu.getId());
-                    mockRequestCn.setIsRun("RUN");
+                    mockRequestCn.setIsRun(1);
                     // 查询对应Uri 下面的策略集合
                     List<MockRequestStrategy> mockRequests = mockRequestStrategyMapper.select(mockRequestCn);
                     // 循环区配策略，遇到策略结果为"true" 时，组装返回数据并返回

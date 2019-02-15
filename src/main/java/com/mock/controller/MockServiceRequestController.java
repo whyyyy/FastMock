@@ -32,7 +32,7 @@ public class MockServiceRequestController{
 		if (count == 1) {
 			rs = new MockResult<>(MockResult.SUCCESS, p.getId());
 		} else {
-			rs = new MockResult(MockResult.ERROR);
+			rs = new MockResult(MockResult.FAIL);
 		}
 		return rs;
 	}
@@ -53,6 +53,7 @@ public class MockServiceRequestController{
 	
 	@RequestMapping(value = "/uri/{id}", method = RequestMethod.GET)
 	public MockResult getByUri(@PathVariable String id) {
+//		log.debug(id);
 		MockRequestStrategy p = new MockRequestStrategy();
 		p.setMockUriId(id);
         MockResult rs;
@@ -68,12 +69,13 @@ public class MockServiceRequestController{
 	@RequestMapping(value = "", method = RequestMethod.PUT)
 	@ResponseBody
 	public MockResult save(@RequestBody MockRequestStrategy p) {
+	    log.info("======update strategy======{}", p);
 		int count = mockRequestStrategyMapper.update(p);
         MockResult rs;
 		if (count == 1) {
             rs = new MockResult(MockResult.SUCCESS);
         }else{
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.DUP);
         }
         return rs;
 	}
@@ -85,7 +87,7 @@ public class MockServiceRequestController{
 		if (count == 1) {
             rs = new MockResult(MockResult.SUCCESS);
         }else{
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.FAIL);
         }
         return rs;
 	}

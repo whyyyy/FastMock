@@ -28,7 +28,7 @@ public class MockController {
     @Autowired
     private MockStrategyService mss;
 
-    @RequestMapping(value = "/{namespace:(?!static)(?!index\\.html).*}/**")
+    @RequestMapping(value = "/{namespace:(?!static)(?!index\\.html)(?!logo\\.png).*}/**")
     public void getRequest(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws IOException {
 
         log.info("===@@@===receive request===@@@===");

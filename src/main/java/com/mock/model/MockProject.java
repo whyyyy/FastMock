@@ -1,11 +1,11 @@
 package com.mock.model;
 
 public class MockProject {
-	private String id = "";
-	private String mockProjectName = "";
-	private Integer idex = null;
-	private String createTime = "";
-	private String updateTime = "";
+	private String id;
+	private String mockProjectName;
+	private Integer idex;
+	private String createTime;
+	private String updateTime;
 	
 	public String getId() {
 		return id;

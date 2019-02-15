@@ -61,7 +61,7 @@
         <appender-ref ref="SQL"/>
     </logger>
 	
-    <root level="info">
+    <root level="debug">
 		<appender-ref ref="ERROR-FILE"/>
 		<appender-ref ref="CONSOLE"/>
     </root>

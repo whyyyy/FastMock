@@ -27,7 +27,7 @@ CREATE TABLE `mockrequeststrategy` (
   `requestWait` int(11) NOT NULL DEFAULT '0' COMMENT '请求等待时间',
   `verifyExpect` text COMMENT '预期验证，自定义约束json 或 验证脚本',
   `responseExpect` text COMMENT '预期返回，自定义json 格式，或脚本',
-  `isRun` varchar(256) NOT NULL DEFAULT 'RUN' COMMENT '是否启用',
+  `isRun` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否启用',
   `remark` varchar(256) DEFAULT NULL COMMENT '备注',
   `orderNum` bigint(20) unsigned DEFAULT '0',
   `idex` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增序列',
@@ -48,7 +48,7 @@ CREATE TABLE `mockuri` (
   `mockUriName` varchar(256) NOT NULL COMMENT '请求URI名称',
   `mockUri` varchar(256) NOT NULL COMMENT '请求URI名称',
   `mockMethod` varchar(256) NOT NULL,
-  `isRun` varchar(256) NOT NULL COMMENT '是否启用',
+  `isRun` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否启用',
   `idex` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增序列',
   `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
@@ -62,7 +62,7 @@ DROP TABLE IF EXISTS `sysconf`;
 
 CREATE TABLE `sysconf` (
   `code` varchar(12) NOT NULL,
-  `value` varchar(12) NOT NULL,
+  `value` tinyint(4) NOT NULL,
   `desc` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -24,10 +24,7 @@ public class MockConfService {
 			List<SysConf> l = sysConfMapper.select(scf);
 			if(l!=null&&l.size()>0){
 				SysConf rs = l.get(0);
-				String v = rs.getValue();
-				if(!v.isEmpty()){
-					return new MockResult<>(MockResult.SUCCESS, rs);
-				}
+				return new MockResult<>(MockResult.SUCCESS, rs);
 			}
 		}catch(Exception e){
 			log.error(ExceptionUtils.getFullStackTrace(e));
@@ -36,11 +33,11 @@ public class MockConfService {
 		return new MockResult(MockResult.FAIL);
 	}
 	
-	public MockResult updateMockStatus(boolean value){
+	public MockResult updateMockStatus(int value){
 		
 		SysConf scf = new SysConf();
 		scf.setCode("mock");
-		scf.setValue(value?"1":"0");
+		scf.setValue(value);
 
 		try{
 			int i = sysConfMapper.update(scf);
@@ -58,19 +55,15 @@ public class MockConfService {
 		
 		SysConf scf = new SysConf();
 		scf.setCode("mock");
-		
 		try{
 			List<SysConf> l = sysConfMapper.select(scf);
 			if(l!=null&&l.size()>0){
 				SysConf rs = l.get(0);
-				String v = rs.getValue();
-				if(!v.isEmpty()&&"0".equals(v)){
-					return false;
-				}
+				return rs.getValue() == 1;
 			}
 		}catch(Exception e){
 			log.error(ExceptionUtils.getFullStackTrace(e));
 		}
-		return true;
+		return false;
 	}
 }

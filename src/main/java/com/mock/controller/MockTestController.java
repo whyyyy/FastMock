@@ -59,7 +59,7 @@ public class MockTestController {
 
     private void appendResult(StringBuilder sb, int tab, String msg){
         String warp = "\n";
-        String t = "\t";
+        String t = "    ";
         for(int i=0;i<tab;i++){
             sb.append(t);
         }

@@ -1,15 +1,15 @@
 package com.mock.model;
 
 public class MockUri {
-	private String id="";
-	private String mockProjectId="";
-	private String mockUriName="";
-	private String mockUri="";
-	private String mockMethod="";
-	private String isRun="";
-	private Integer idex =0;
-	private String createTime="";
-	private String updateTime="";
+	private String id;
+	private String mockProjectId;
+	private String mockUriName;
+	private String mockUri;
+	private String mockMethod;
+	private Integer isRun;
+	private Integer idex;
+	private String createTime;
+	private String updateTime;
 	
 	public String getId() {
 		return id;
@@ -41,10 +41,10 @@ public class MockUri {
 	public void setMockMethod(String mockMethod) {
 		this.mockMethod = mockMethod;
 	}
-	public String getIsRun() {
+	public Integer getIsRun() {
 		return isRun;
 	}
-	public void setIsRun(String isRun) {
+	public void setIsRun(Integer isRun) {
 		this.isRun = isRun;
 	}
 	public Integer getIdex() {
@@ -64,5 +64,20 @@ public class MockUri {
 	}
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	@Override
+	public String toString() {
+		return "MockUri{" +
+				"id='" + id + '\'' +
+				", mockProjectId='" + mockProjectId + '\'' +
+				", mockUriName='" + mockUriName + '\'' +
+				", mockUri='" + mockUri + '\'' +
+				", mockMethod='" + mockMethod + '\'' +
+				", isRun=" + isRun +
+				", idex=" + idex +
+				", createTime='" + createTime + '\'' +
+				", updateTime='" + updateTime + '\'' +
+				'}';
 	}
 }

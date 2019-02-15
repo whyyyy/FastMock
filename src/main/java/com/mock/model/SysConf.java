@@ -2,7 +2,7 @@ package com.mock.model;
 
 public class SysConf {
 	private String code = "";
-	private String value = "";
+	private int value = 0;
 	private String desc = "";
 	
 	public String getCode() {
@@ -11,10 +11,10 @@ public class SysConf {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getValue() {
+	public int getValue() {
 		return value;
 	}
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 	public String getDesc() {

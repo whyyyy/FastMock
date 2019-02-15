@@ -99,7 +99,7 @@
 	</dependencies>
 
 	<build>
-        <finalName>mockserver</finalName>
+        <finalName>fastmock</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

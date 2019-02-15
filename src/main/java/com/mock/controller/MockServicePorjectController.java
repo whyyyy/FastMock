@@ -33,7 +33,7 @@ public class MockServicePorjectController {
         if (count == 1) {
             rs = new MockResult<>(MockResult.SUCCESS, p.getId());
         } else {
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.FAIL);
         }
         return rs;
     }
@@ -71,7 +71,7 @@ public class MockServicePorjectController {
         if (count == 1) {
             rs = new MockResult(MockResult.SUCCESS);
         } else {
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.FAIL);
         }
         return rs;
     }
@@ -83,7 +83,7 @@ public class MockServicePorjectController {
         mockUriBean.setMockProjectId(p.getId());
 
         if (mockUriMapper.select(mockUriBean).size() > 0) {
-            rs = new MockResult<>(MockResult.ERROR, "please delete the Uri items", null);
+            rs = new MockResult<>(MockResult.FAIL, "please delete the Uri items", null);
             return rs;
         }
 
@@ -91,7 +91,7 @@ public class MockServicePorjectController {
         if (count == 1) {
             rs = new MockResult(MockResult.SUCCESS);
         } else {
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.FAIL);
         }
         return rs;
     }

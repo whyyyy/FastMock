@@ -35,7 +35,7 @@ public class MockServiceURIController{
 		if (count == 1) {
             rs = new MockResult<>(MockResult.SUCCESS, p.getId());
         } else {
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.FAIL);
         }
         return rs;
 	}
@@ -58,6 +58,7 @@ public class MockServiceURIController{
 	public MockResult getByProject(@PathVariable String id) {
 		MockUri p = new MockUri();
 		p.setMockProjectId(id);
+		log.debug("====={}=====", p);
         MockResult rs;
 		List<MockUri> ls = mockUriMapper.select(p);
 		if(ls.size()>0){
@@ -70,12 +71,13 @@ public class MockServiceURIController{
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
 	public MockResult save(@RequestBody MockUri p) {
+	    log.info("======update uri======{}", p);
 		int count = mockUriMapper.update(p);
         MockResult rs;
 		if (count == 1) {
             rs = new MockResult(MockResult.SUCCESS);
         }else{
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.DUP);
         }
         return rs;
 	}
@@ -87,14 +89,14 @@ public class MockServiceURIController{
 		mockRequestStrategyBean.setMockUriId(p.getId());
 
 		if (mockRequestStrategyMapper.select(mockRequestStrategyBean).size() >0){
-			rs = new MockResult<>(MockResult.ERROR, "please delete the request items",null);
+			rs = new MockResult<>(MockResult.FAIL, "please delete the strategy items first",null);
 			return rs;
 		}
 		int count = mockUriMapper.delete(p);
 		if (count == 1) {
             rs = new MockResult(MockResult.SUCCESS);
         }else{
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.FAIL);
         }
         return rs;
 	}
@@ -105,7 +107,7 @@ public class MockServiceURIController{
 		int count = 0;
 		log.debug("updateStatus {}",j);
 		try{
-			String status = j.getBoolean("state")?"RUN":"STOP";
+			int status = j.getBoolean("state")?1:0;
 			String id = j.getString("id");
 			if("uri".equalsIgnoreCase(j.getString("type"))){
 				MockUri mu = new MockUri();
@@ -125,7 +127,7 @@ public class MockServiceURIController{
 		if (count == 1) {
             rs = new MockResult(MockResult.SUCCESS);
         }else{
-            rs = new MockResult(MockResult.ERROR);
+            rs = new MockResult(MockResult.FAIL);
         }
         return rs;
 	}

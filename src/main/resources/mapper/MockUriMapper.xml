@@ -6,36 +6,37 @@
 
 	<insert id="insert" parameterType="com.mock.model.MockUri">
 		insert into mockuri
-		(id,mockProjectId,mockUriName,mockUri,mockMethod,isRun,createTime,updateTime)
+		(id,mockProjectId,mockUriName,mockUri,mockMethod,isRun)
 		values
-		(#{id},#{mockProjectId},#{mockUriName},#{mockUri},#{mockMethod},#{isRun},now(),now())
+		(#{id},#{mockProjectId},#{mockUriName},#{mockUri},#{mockMethod},#{isRun})
 	</insert>
 
 	<update id="update" parameterType="com.mock.model.MockUri">
 		update mockuri
 		set
 		<if test="mockUriName != null and mockUriName != ''">
-		mockUriName=#{mockUriName},	
+		    mockUriName=#{mockUriName},
 		</if>
 		<if test="mockUri != null and mockUri != ''">	
-		mockUri=#{mockUri},	
+		    mockUri=#{mockUri},
 		</if>
 		<if test="mockMethod != null and mockMethod != ''">
-		mockMethod=#{mockMethod},
+		    mockMethod=#{mockMethod},
 		</if>
-		<if test="isRun != null and isRun != ''">
-		isRun=#{isRun},
+		<if test="isRun != null">
+		    isRun=#{isRun},
 		</if>
-		updateTime=now()
+		id=#{id}
 		where
-		id=#{id}		
+		id=#{id}
+        <if test="updateTime != null and updateTime != ''">
+            and updateTime = #{updateTime}
+        </if>
 	</update>
 
 	<delete id="delete" parameterType="com.mock.model.MockUri">
-		delete from  mockuri where id = #{id} 
+		delete from  mockuri where id = #{id}
 	</delete>
-
-
 
 	<select id="select" parameterType="com.mock.model.MockUri" resultType ="com.mock.model.MockUri">
 		select * from mockuri
@@ -53,7 +54,7 @@
 			<if test="mockMethod != null and mockMethod != ''">
 				and mockMethod  = #{mockMethod}
 			</if>
-			<if test="isRun != null and isRun != ''">
+			<if test="isRun != null">
 				and isRun  = #{isRun}
 			</if>
 			order by idex asc

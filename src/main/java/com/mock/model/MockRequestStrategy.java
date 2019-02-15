@@ -1,18 +1,18 @@
 package com.mock.model;
 
 public class MockRequestStrategy {
-	private String id ="";
-	private String mockUriId="";
-	private String mockRequestName="";
-	private Integer requestWait =0;
-	private String verifyExpect= null;
-	private String responseExpect = null;
-	private String isRun ="RUN";
-	private String remark = null;
-	private Integer orderNum =0;
-	private Integer idex=0;
-	private String createTime ="";
-	private String updateTime ="";
+	private String id;
+	private String mockUriId;
+	private String mockRequestName;
+	private Integer requestWait;
+	private String verifyExpect;
+	private String responseExpect;
+	private Integer isRun;
+	private String remark;
+	private Integer orderNum;
+	private Integer idex;
+	private String createTime;
+	private String updateTime;
 
 	public String getId() {
 		return id;
@@ -50,10 +50,10 @@ public class MockRequestStrategy {
 	public void setResponseExpect(String responseExpect) {
 		this.responseExpect = responseExpect;
 	}
-	public String getIsRun() {
+	public Integer getIsRun() {
 		return isRun;
 	}
-	public void setIsRun(String isRun) {
+	public void setIsRun(Integer isRun) {
 		this.isRun = isRun;
 	}
 	public String getRemark() {
@@ -85,5 +85,23 @@ public class MockRequestStrategy {
 	}
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	@Override
+	public String toString() {
+		return "MockRequestStrategy{" +
+				"id='" + id + '\'' +
+				", mockUriId='" + mockUriId + '\'' +
+				", mockRequestName='" + mockRequestName + '\'' +
+				", requestWait=" + requestWait +
+				", verifyExpect='" + verifyExpect + '\'' +
+				", responseExpect='" + responseExpect + '\'' +
+				", isRun=" + isRun +
+				", remark='" + remark + '\'' +
+				", orderNum=" + orderNum +
+				", idex=" + idex +
+				", createTime='" + createTime + '\'' +
+				", updateTime='" + updateTime + '\'' +
+				'}';
 	}
 }

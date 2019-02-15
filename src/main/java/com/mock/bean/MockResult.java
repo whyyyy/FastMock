@@ -13,6 +13,7 @@ public class MockResult<T> {
     public static final int SUCCESS = 0;
     public static final int FAIL = -1;
     public static final int NOTFOUND = 404;
+    public static final int DUP = 1;
     private static final Map<Integer,String> MESSAGE =  new HashMap<>();
 
     static {
@@ -20,6 +21,7 @@ public class MockResult<T> {
         MESSAGE.put(SUCCESS, "Success");
         MESSAGE.put(FAIL, "Failed");
         MESSAGE.put(NOTFOUND, "No request strategy matches and failed on forwarding");
+        MESSAGE.put(DUP, "This item may have been modified, please save your work and refresh");
     }
 
     private int code;

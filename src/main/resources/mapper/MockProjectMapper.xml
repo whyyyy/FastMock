@@ -14,10 +14,12 @@
 	<update id="update" parameterType="com.mock.model.MockProject">
 		update mockproject
 		set
-		mockProjectName=#{mockProjectName},		
-		updateTime=now()
+		mockProjectName=#{mockProjectName}
 		where
-		id=#{id}		
+		id=#{id}
+        <if test="updateTime != null and updateTime != ''">
+            and updateTime = #{updateTime}
+        </if>
 	</update>
 
 	<delete id="delete" parameterType="com.mock.model.MockProject">
@@ -33,7 +35,7 @@
 			<if test="id != null and id != ''">
 				and id = #{id}
 			</if>			
-			order by idex asc
+			order by idex desc
 		</where>
 	</select>
 

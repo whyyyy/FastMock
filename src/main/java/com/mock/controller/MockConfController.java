@@ -17,18 +17,13 @@ public class MockConfController {
 	private MockConfService mcs;
 	
 	@RequestMapping(value="/conf")
-	public MockResult mockconfig(@RequestParam(value = "method")String method, boolean value){
-
+	public MockResult mockconfig(@RequestParam(value = "method")String method, @RequestParam(value = "value", required = false, defaultValue = "1")int value){
 		MockResult rs = null;
-
-		if("getMockStatus".equalsIgnoreCase(method)){
+		if("getMockStatus".equals(method)){
 			rs = mcs.getMockStatus();
-		}else if("updateMockStatus".equalsIgnoreCase(method)){
+		}else if("updateMockStatus".equals(method)){
 			rs = mcs.updateMockStatus(value);
 		}
-		
-		log.debug("mock conf result {}",rs);
-		
 		return rs;
 	}
 }

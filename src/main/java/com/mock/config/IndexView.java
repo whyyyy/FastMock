@@ -9,7 +9,7 @@ public class IndexView implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("/static/index.html");
+        registry.addViewController("/").setViewName("/index.html");
         registry.setOrder(-1);
     }
 }

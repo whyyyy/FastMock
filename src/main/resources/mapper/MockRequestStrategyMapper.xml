@@ -6,9 +6,9 @@
 
 	<insert id="insert" parameterType="com.mock.model.MockRequestStrategy">
 		insert into mockrequeststrategy
-		(id,mockUriId,mockRequestName,requestWait,verifyExpect,responseExpect,isRun,orderNum,remark,createTime,updateTime)
+		(id,mockUriId,mockRequestName,requestWait,verifyExpect,responseExpect,isRun,orderNum,remark)
 		values
-		(#{id},#{mockUriId},#{mockRequestName},#{requestWait},#{verifyExpect},#{responseExpect},#{isRun},${orderNum},#{remark},now(),now())
+		(#{id},#{mockUriId},#{mockRequestName},#{requestWait},#{verifyExpect},#{responseExpect},#{isRun},${orderNum},#{remark})
 	</insert>
 
 	<update id="update" parameterType="com.mock.model.MockRequestStrategy">
@@ -26,10 +26,10 @@
 		<if test="responseExpect != null">
 			responseExpect=#{responseExpect},
 		</if>
-		<if test="isRun != null and isRun != ''">
+		<if test="isRun != null">
 			isRun=#{isRun},
 		</if>
-		<if test="orderNum != null and orderNum != ''">
+		<if test="orderNum != null">
 			orderNum=#{orderNum},
 		</if>
 		<if test="remark != null">
@@ -37,7 +37,10 @@
 		</if>
 		id=#{id}
 		where
-		id=#{id}		
+		id=#{id}
+		<if test="updateTime != null and updateTime != ''">
+			and updateTime = #{updateTime}
+		</if>
 	</update>
 
 	<delete id="delete" parameterType="com.mock.model.MockRequestStrategy">
