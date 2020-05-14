@@ -12,7 +12,7 @@ This server can be used as a proxy.
     Also there is a switch for mock function on top level. If it is switched off, this server will try to forward all requests no matter if there is strategy hit.
     
 Screen shot
-<img src="/screenshot.png" />
+![pic](https://github.com/whyyyy/FastMock/blob/master/screenshot.png)
     
 # Installation
 
