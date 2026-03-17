@@ -16,7 +16,7 @@ public class HttpCallbackService {
     @Autowired
     private HttpForwardService hfs;
     @Autowired
-    private AssembleBody ab;
+    private ContentFormatter contentFormatter;
 
     public void callBack(JSONArray ja) {
         for (Object jo : ja) {
@@ -45,7 +45,7 @@ public class HttpCallbackService {
             header.put("Content-Type", "application/json");
         }
 
-        String ctn = ab.formatContent(j);
+        String ctn = contentFormatter.formatContent(j);
         final net.sf.json.JSONObject content = net.sf.json.JSONObject.fromObject(ctn);
         final int delay = j.get("delay") != null ? j.getInt("delay") : 0;
 

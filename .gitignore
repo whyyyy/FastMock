@@ -25,3 +25,5 @@ mvnw.cmd
 /dist/
 /nbdist/
 /.nb-gradle/
+.claude/settings.local.json
+.vscode/settings.json
