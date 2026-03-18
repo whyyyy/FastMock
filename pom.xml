@@ -72,7 +72,7 @@
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
-            <version>1.4.17</version>
+            <version>1.4.21</version>
         </dependency>
 		<dependency>
 			<groupId>xpp3</groupId>
@@ -89,7 +89,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.49</version>
+            <version>1.2.83</version>
         </dependency>
         <dependency>
             <groupId>net.sf.json-lib</groupId>
